@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/img_1"
+    android:orientation="vertical"
+    tools:context=".NewsFragment">
+
+
+    <TextView
+        android:layout_marginTop="150dp"
+        android:id="@+id/tv_add_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/holtwood_one_sc"
+        android:text="Add news:"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/et_text"
+        android:inputType="textCapSentences"
+        android:layout_marginTop="50dp"
+        android:hint="Enter text"
+        android:textColorHint="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:textAllCaps="false"
+        android:text="Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</LinearLayout>
