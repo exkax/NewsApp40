@@ -46,4 +46,18 @@ dependencies {
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    // Lottie
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    // Room
+    implementation "androidx.room:room-runtime:2.4.1"
+    annotationProcessor "androidx.room:room-compiler:2.4.1"
+
+    // Dots
+
+    dependencies {
+        implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+    }
 }

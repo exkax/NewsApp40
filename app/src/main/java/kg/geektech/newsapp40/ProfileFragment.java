@@ -26,11 +26,16 @@ public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     private ActivityResultLauncher<String> pf;
+    private  Prefs prefs;
     private Uri uri;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);}
+        super.onCreate(savedInstanceState);
+        prefs = new Prefs(requireContext());
+
+
+    }
 
 
 
@@ -43,6 +48,8 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.etName.setText(prefs.getName());
+
         binding.ivProfile.setOnClickListener(view1 -> {
             initListener();
         });
@@ -54,7 +61,7 @@ public class ProfileFragment extends Fragment {
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == Activity.RESULT_OK){
                         uri = result.getData().getData();
-                      //  prefs.saveImageUri(String.valueOf(uri));
+                        prefs.saveImageUri(String.valueOf(uri));
                         binding.ivProfile.setImageURI(uri);
                     }
                 }
@@ -67,6 +74,20 @@ public class ProfileFragment extends Fragment {
         intent.setAction(Intent.ACTION_PICK);
         intent.setType("image/*");
         activityResultLauncher.launch(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (prefs.getImageUri() != null) uri = Uri.parse(prefs.getImageUri());
+        Glide.with(requireContext()).load(uri).circleCrop().into(binding.ivProfile);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        prefs.saveUserName(binding.etName.getText().toString());
     }
 
     @Override

@@ -18,7 +18,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
     private List<News> newsList =  new ArrayList<>();
     private ItemNewsBinding binding;
     private onItemClick onItemClick;
-    private News news;
 
     public void setOnItemClick(onItemClick onItemClick) {
         this.onItemClick = onItemClick;
@@ -36,6 +35,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
 
     public void removeItem(int pos) {
         newsList.remove(pos);
+        notifyItemRemoved(pos);
     }
 
     
@@ -54,10 +54,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     holder.onBind(newsList.get(position));
         if (position %2 == 0){
-            holder.itemView.setBackgroundResource(R.color.purple_700);
+            holder.itemView.setBackgroundResource(R.drawable.bg_gradient);
         }else{
 
-            holder.itemView.setBackgroundResource(R.color.purple_200);
+            holder.itemView.setBackgroundResource(R.drawable.bg_gradient2);
         }
     }
 
@@ -95,7 +95,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
     
     
     
-    interface onItemClick {
+    public interface onItemClick {
         void onClick(int pos);
         void onLongClick(int pos);
     }

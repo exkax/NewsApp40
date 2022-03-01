@@ -35,4 +35,10 @@
         android:name="kg.geektech.newsapp40.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/fragmentBoard"
+        android:name="kg.geektech.newsapp40.ui.board.FragmentBoard"
+        android:label="board_fragment"
+        tools:layout="@layout/board_fragment" />
+
 </navigation>
