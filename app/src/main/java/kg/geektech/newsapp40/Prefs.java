@@ -23,9 +23,18 @@ public class Prefs {
         preferences.edit().putString("name", name).apply();
     }
 
+
+    public void saveNumber(String number) {
+        preferences.edit().putString("number", number).apply();
+    }
+
     public String getName() {
         return preferences.getString("name", "");
     }
+
+//    public String getNumber() {
+//        return preferences.getString("number", "");
+//    }
 
     public void saveImageUri(String image) {
         preferences.edit().putString("avatar", image).apply();
@@ -35,5 +44,12 @@ public class Prefs {
         return preferences.getString("avatar", null);
     }
 
+    public  void cleanPrefs(){
+        preferences.edit().remove("avatar").apply();
+    }
+
+    public String getNumber(String toString) {
+        return preferences.getString("number", "");
+    }
 }
 

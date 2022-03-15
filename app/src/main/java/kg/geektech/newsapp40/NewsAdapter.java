@@ -23,22 +23,26 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
         this.onItemClick = onItemClick;
     }
 
-
     public void setNewsList(News news) {
-        this.newsList.add(news);
-        notifyItemInserted(0);
+        newsList.add(news);
+        notifyItemInserted(newsList.size());
     }
 
     public News getNews(int pos) {
         return newsList.get(pos);
     }
-
     public void removeItem(int pos) {
         newsList.remove(pos);
-        notifyItemRemoved(pos);
     }
 
-    
+    public void setNewsList(List<News> list) {
+        this.newsList = list;
+        notifyDataSetChanged();
+
+
+    }
+
+
 
     @NonNull
     @Override
@@ -71,6 +75,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
         notifyDataSetChanged();
 
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull ItemNewsBinding binding) {

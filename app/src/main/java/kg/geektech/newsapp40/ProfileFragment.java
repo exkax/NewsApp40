@@ -49,7 +49,7 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.etName.setText(prefs.getName());
-
+        binding.etNumber.setText(prefs.getNumber(toString()));
         binding.ivProfile.setOnClickListener(view1 -> {
             initListener();
         });
@@ -88,6 +88,7 @@ public class ProfileFragment extends Fragment {
     public void onStop() {
         super.onStop();
         prefs.saveUserName(binding.etName.getText().toString());
+        prefs.saveNumber(binding.etNumber.getText().toString());
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,17 +27,18 @@ public class MainActivity extends AppCompatActivity {
 
      ActivityMainBinding binding;
     private NavController navController;
+    private  Prefs prefs;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        prefs = new Prefs(this);
 
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+      BottomNavigationView navView = findViewById(R.id.nav_view);
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications,
@@ -69,21 +71,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // File file =  new File(Environment.getExternalStorageState(), "note.txt");
-       // file.createNewFile();
+    }
 
-        //File folder =  new File(getCacheDir(), "Media/Image");
-        //folder.mkdirs();
-        //folder.listFiles();
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.clear_cache ){
+            prefs.cleanPrefs();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater =  getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
-        return true;
+        getMenuInflater().inflate(R.menu.example_menu, menu);
+    return true;
     }
+
+
 
     //            ArrayList<Integer> listFragment = new ArrayList<>();
 //            listFragment.add(R.id.navigation_home);
